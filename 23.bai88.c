@@ -185,6 +185,6 @@ int main () {
         nhap2(&a, &b, s);
         haiPhanSo(a, b);
     }
-
+    
     return 0;
 }
