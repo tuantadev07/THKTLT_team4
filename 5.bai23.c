@@ -18,10 +18,10 @@ void cau_b(double a, int n) {
 
 void cau_c(double a, int n) {
     double res = 1.0/a;
-    double tmp = a;
+    double tmp = 1.0/a;
     for (int i=1; i<=n; ++i) {
-        tmp *= (a+i);
-        res += 1.0/tmp;
+        tmp *= 1.0/(a+i);
+        res += tmp;
     }
     printf("%g\n", res);
 }
