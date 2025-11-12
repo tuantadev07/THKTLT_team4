@@ -42,10 +42,12 @@ void nhap2(phanSo *a, phanSo *b, char *s) {
             a->tu += s[i]-'0';
         }
     }
-    for (; s[i]!=' ' && i<n; ++i) {
+    int ok = 1;
+    for (; (s[i]!=' ' || ok) && i<n; ++i) {
         if ('0' <= s[i] && s[i] <= '9') {
             a->mau *= 10;
             a->mau += s[i]-'0';
+            ok = 0;
         }
     }
 
