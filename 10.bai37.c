@@ -1,0 +1,110 @@
+#include <stdio.h>
+#include <math.h>
+
+int scp(int n) {
+    int k = sqrt(n);
+    return k*k==n;
+}
+int snt(int n) {
+    for (int i=2; i*i<=n; ++i) {
+        if (n%i==0) return 0;
+    }
+    return n>1;
+}
+
+int checkDang2(int n) {
+    for (int i=2; i*i<=n; ++i) {
+        if (n%i==0) {
+            int p = i;
+            int k = 0;
+            while (n%i==0) {
+                ++k;
+                n /= i;
+            }
+            if (p%4==3 && k&1) {
+                return 0;
+            }
+        }
+    }
+    if (n%4==3) return 0;
+    return 1;
+}
+int checkDang3(int n) {
+    while (n%4==0) {
+        n /= 4;
+    }
+    if (n%8==7) return 0;
+    return 1;
+}
+
+void tongCua2So(int n) {
+    for (int i=0; i*i<=n; ++i) {
+        int j = n-i*i;
+        if (scp(j)) {
+            printf("%d %d\n", j, i*i);
+            return;
+        }
+    }
+}
+void tongCua3So(int n) {
+    int a[3] = {0};
+    for (int i=0; i*i<=n; ++i) {
+        int tmp = n-i*i;
+        for (int j=0; j*j<=tmp; ++j) {
+            int k = tmp - j*j;
+            if (scp(k)) {
+                if (k > a[0]) {
+                    a[0] = k;
+                    a[1] = j*j;
+                    a[2] = i*i;
+                }
+            }
+        }
+    }
+    printf("%d %d %d\n", a[0], a[1], a[2]);
+}
+void tongCua4So(int n) {
+    int a[4] = {0};
+    for (int i=0; i*i<=n; ++i) {
+        int tmp1 = n- i*i;
+        for (int j=0; j*j<=tmp1; ++j) {
+            int tmp2 = tmp1 - j*j;
+            for (int k=0; k*k<=tmp2; ++k) {
+                int l = tmp2 - k*k;
+                if (scp(l)) {
+                    if (l > a[0]) {
+                        a[0] = l;
+                        a[1] = k*k;
+                        a[2] = j*j;
+                        a[3] = i*i;
+                    }
+                }
+            }
+        }
+    }
+      printf("%d %d %d %d\n", a[0], a[1], a[2], a[3]);
+}
+
+void solve(int n) {
+    if (scp(n)) {
+        printf("%d\n", n);
+        return;
+    }
+    if (checkDang2(n)) {
+        tongCua2So(n);
+        return;
+    }
+    if (checkDang3(n)) {
+        tongCua3So(n);
+        return;
+    }
+    tongCua4So(n);
+}
+
+int main () {   
+    int n; scanf("%d", &n);
+   
+    solve(n);
+
+    return 0;
+}
