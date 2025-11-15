@@ -1,5 +1,4 @@
 #include <stdio.h>
-typedef long long ll;
 
 void tinhGiaiThua(int n) {
     int a[(int)1e6] = {0};
@@ -18,7 +17,7 @@ void tinhGiaiThua(int n) {
             c /= 10;
         }   
     }
-    
+
     for (int i=len-1; i>=0; --i) {
         printf("%d", a[i]);
     }
