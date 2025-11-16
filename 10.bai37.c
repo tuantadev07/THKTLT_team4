@@ -26,15 +26,13 @@ int checkDang2(int n) {
             }
         }
     }
-    if (n%4==3) return 0;
-    return 1;
+    return n%4!=3;
 }
-int checkDang3(int n) {
+int checkDang3(int n) { 
     while (n%4==0) {
         n /= 4;
     }
-    if (n%8==7) return 0;
-    return 1;
+    return n%8!=7;
 }
 
 void tongCua2So(int n) {
