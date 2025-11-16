@@ -38,51 +38,40 @@ int checkDang3(int n) {
 }
 
 void tongCua2So(int n) {
-    for (int i=0; i*i<=n; ++i) {
-        int j = n-i*i;
-        if (scp(j)) {
-            printf("%d %d\n", j, i*i);
+    for (int a=0; a*a<=n; ++a) {
+        int b = n-a*a;
+        if (scp(b)) {
+            printf("%d %d\n", b, a*a);
             return;
         }
     }
 }
 void tongCua3So(int n) {
-    int a[3] = {0};
-    for (int i=0; i*i<=n; ++i) {
-        int tmp = n-i*i;
-        for (int j=0; j*j<=tmp; ++j) {
-            int k = tmp - j*j;
-            if (scp(k)) {
-                if (k > a[0]) {
-                    a[0] = k;
-                    a[1] = j*j;
-                    a[2] = i*i;
-                }
+    for (int a=0; a*a<=n; ++a) {
+        int tmp = n-a*a;
+        for (int b=0; b*b<=tmp; ++b) {
+            int c = tmp - b*b;
+            if (scp(c)) {
+                printf("%d %d %d\n", c, b*b, a*a);
+                return;
             }
         }
     }
-    printf("%d %d %d\n", a[0], a[1], a[2]);
 }
 void tongCua4So(int n) {
-    int a[4] = {0};
-    for (int i=0; i*i<=n; ++i) {
-        int tmp1 = n- i*i;
-        for (int j=0; j*j<=tmp1; ++j) {
-            int tmp2 = tmp1 - j*j;
-            for (int k=0; k*k<=tmp2; ++k) {
-                int l = tmp2 - k*k;
-                if (scp(l)) {
-                    if (l > a[0]) {
-                        a[0] = l;
-                        a[1] = k*k;
-                        a[2] = j*j;
-                        a[3] = i*i;
-                    }
+    for (int a=0; a*a<=n; ++a) {
+        int tmp1 = n- a*a;
+        for (int b=0; b*b<=tmp1; ++b) {
+            int tmp2 = tmp1 - b*b;
+            for (int c=0; c*c<=tmp2; ++c) {
+                int d = tmp2 - c*c;
+                if (scp(d)) {
+                    printf("%d %d %d %d\n", d, c*c, b*b, a*a);
+                    return;
                 }
             }
         }
     }
-      printf("%d %d %d %d\n", a[0], a[1], a[2], a[3]);
 }
 
 void solve(int n) {
