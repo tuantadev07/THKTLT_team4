@@ -14,7 +14,8 @@ int snt(int n) {
 
 int checkDang2(int n) {
     for (int i=2; i*i<=n; ++i) {
-        if (n%i==0) {
+        if (n%i==0) 
+        {
             int p = i;
             int k = 0;
             while (n%i==0) {
@@ -36,35 +37,35 @@ int checkDang3(int n) {
 }
 
 void tongCua2So(int n) {
-    for (int a=0; a*a<=n; ++a) {
-        int b = n-a*a;
-        if (scp(b)) {
-            printf("%d %d\n", b, a*a);
+    for (int i=0; i*i<=n; ++i) {
+        int j = n-i*i;
+        if (scp(j)) {
+            printf("%d %d\n", j, i*i);
             return;
         }
     }
 }
 void tongCua3So(int n) {
-    for (int a=0; a*a<=n; ++a) {
-        int tmp = n-a*a;
-        for (int b=0; b*b<=tmp; ++b) {
-            int c = tmp - b*b;
-            if (scp(c)) {
-                printf("%d %d %d\n", c, b*b, a*a);
+    for (int i=0; i*i<=n; ++i) {
+        int tmp = n-i*i;
+        for (int j=0; j*j<=tmp; ++j) {
+            int k = tmp - j*j;
+            if (scp(k)) {
+                printf("%d %d %d\n", k, j*j, i*i);
                 return;
             }
         }
     }
 }
 void tongCua4So(int n) {
-    for (int a=0; a*a<=n; ++a) {
-        int tmp1 = n- a*a;
-        for (int b=0; b*b<=tmp1; ++b) {
-            int tmp2 = tmp1 - b*b;
-            for (int c=0; c*c<=tmp2; ++c) {
-                int d = tmp2 - c*c;
-                if (scp(d)) {
-                    printf("%d %d %d %d\n", d, c*c, b*b, a*a);
+    for (int i=0; i*i<=n; ++i) {
+        int tmp1 = n - i*i;
+        for (int j=0; j*j<=tmp1; ++j) {
+            int tmp2 = tmp1 - j*j;
+            for (int k=0; k*k<=tmp2; ++k) {
+                int l = tmp2 - k*k;
+                if (scp(l)) {
+                    printf("%d %d %d %d\n", l, k*k, j*j, i*i);
                     return;
                 }
             }

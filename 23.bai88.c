@@ -3,10 +3,11 @@
 #include <string.h>
 
 
-typedef struct phanSo
-{
+struct phanSo {
     int tu, mau;
-} phanSo;
+};
+
+typedef struct phanSo phanSo;
 
 
 int gcd(int a, int b) {
@@ -17,16 +18,16 @@ int lcm(int a, int b) {
     return a/gcd(a, b)*b;
 }
 
-void nhap1(phanSo *a, char *s) {
+void nhap1(phanSo *a, char s[]) {
     a->tu = a->mau = 0;
-    int i = 0, n = strlen(s);
-    for (; s[i]!='/' && i<n; ++i) {
+    int i, n = strlen(s);
+    for (i=0; s[i]!='/'; ++i) {
         if ('0' <= s[i] && s[i] <= '9') {
             a->tu *= 10;
             a->tu += s[i]-'0';
         }
     }
-    for (; i<n; ++i) {
+    for (++i; i<n; ++i) {
         if ('0' <= s[i] && s[i] <= '9') {
             a->mau *= 10;
             a->mau += s[i]-'0';
@@ -78,7 +79,7 @@ phanSo daoNguoc(phanSo a) {
 
 phanSo rutGon(phanSo a) {
     phanSo res = a;
-    int ucll = abs(gcd(a.tu, a.mau));
+    int ucll = gcd(abs(a.tu), abs(a.mau));
     res.tu /= ucll;
     res.mau /= ucll;
     return res;
@@ -86,13 +87,11 @@ phanSo rutGon(phanSo a) {
 
 void hopPhan(phanSo a) {
     if (a.tu <= a.mau) {
-        printf("\n");
+        printf("%d/%d\n", a.tu, a.mau);
         return;
     }
     int n = (a.tu/a.mau)*a.mau;
-    a.tu -= n;
-    n /= a.mau;
-    printf("%d+%d/%d\n", n, a.tu, a.mau);
+    printf("%d+%d/%d\n", n/a.mau, a.tu-n, a.mau);
 }
 
 phanSo cong(phanSo a, phanSo b) {
@@ -137,7 +136,7 @@ void soSanh(phanSo a, phanSo b) {
     }
 }
 
-int check(char *s) {
+int check(char s[]) {
     int n = strlen(s);
     int cnt = 0;
     for (int i=0; i<n; ++i) {
@@ -182,11 +181,13 @@ int main () {
     if (check(s)==1) {
         nhap1(&a, s); 
         motPhanSo(a);
-    } else {
+    } else if (check(s)==2) {
         int i=0;
         nhap2(&a, &b, s);
         haiPhanSo(a, b);
+    } else {
+        printf("Du lieu dau vao khong hop le\n");
     }
-    
+
     return 0;
 }

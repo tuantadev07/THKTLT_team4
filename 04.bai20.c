@@ -1,11 +1,10 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 int tongChuSo(int n) {
     int sum = 0;
 
     while (n) {
-        int d = abs(n%10);
+        int d = n%10;
         sum += d*d*d;
         n /= 10;
     }
