@@ -1,12 +1,8 @@
 #include <stdio.h>
 
-const int maxSize = 100;
-const double EPS = 1e-9;
+#define maxSize 1000
+double a[maxSize][maxSize];
 
-int laSoNguyen(double a) {
-    int b = a;
-    return a-b < EPS;
-}
 int timViTriMax(double a[], int n) {
     int res = 0;
     for (int i=0; i<n; ++i) {
@@ -34,11 +30,7 @@ void nhap(double a[][maxSize], int n) {
 void xuat(double a[][maxSize], int n) {
     for (int i=0; i<n; ++i) {
         for (int j=0; j<n; ++j) {
-            if (laSoNguyen(a[i][j])) {
-                printf("%.0lf ", a[i][j]);
-            }else {
-                printf("%.2lf ", a[i][j]);
-            }
+            printf("%.6g ", a[i][j]);
         }
         printf("\n");
     }
@@ -58,12 +50,11 @@ void cau_b(double a[][maxSize], int n) {
     }
     printf("Ma tran sau khi dua phan tu lon nhat cua tung hang len duong cheo phu:\n");
     xuat(a, n);
-    printf("Tong cua cac phan tu lon nhat: %lf\n", sum);
+    printf("Tong cua cac phan tu lon nhat: %.6g\n", sum);
 }
 
 int main () {
     int n; scanf("%d", &n);
-    double a[n][n];
     nhap(a, n);
    
     cau_a(a, n);

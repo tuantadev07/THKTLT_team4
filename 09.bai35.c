@@ -5,14 +5,17 @@ void tinhGiaiThua(int n) {
     a[0] = 1;
     int len=1;
 
-    for (int i=2; i<=n; ++i) {
+    for (int i=2; i<=n; ++i) 
+    {
         int c = 0;
-        for (int j=0; j<len; ++j) {
+        for (int j=0; j<len; ++j) 
+        {
             int tmp = a[j]*i + c;
             a[j] = tmp%10;
             c = tmp/10;
         }
-        while (c>0) {
+        while (c > 0) 
+        {
             a[len++] = c%10;
             c /= 10;
         }   
