@@ -2,13 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 struct phanSo {
     int tu, mau;
 };
-
 typedef struct phanSo phanSo;
-
 
 int gcd(int a, int b) {
     if (b==0) return a;
@@ -67,6 +64,10 @@ void nhap2(phanSo *a, phanSo *b, char *s) {
 }
 
 void xuat(phanSo a) {
+    if (a.tu%a.mau==0) {
+        printf("%d\n", a.tu/a.mau);
+        return;
+    }
     printf("%d/%d\n", a.tu, a.mau);
 }
 
@@ -90,8 +91,8 @@ void hopPhan(phanSo a) {
         printf("%d/%d\n", a.tu, a.mau);
         return;
     }
-    int n = (a.tu/a.mau)*a.mau;
-    printf("%d+%d/%d\n", n/a.mau, a.tu-n, a.mau);
+    int boi = (a.tu/a.mau)*a.mau;
+    printf("%d+%d/%d\n", boi/a.mau, a.tu-boi, a.mau);
 }
 
 phanSo cong(phanSo a, phanSo b) {
@@ -128,11 +129,11 @@ void soSanh(phanSo a, phanSo b) {
     double y = (double)b.tu/b.mau;
     
     if (x < y) {
-        printf("phan so %d/%d nho hon phan so %d/%d\n", a.tu, a.mau, b.tu, b.mau);
+        printf("%d/%d < %d/%d\n", a.tu, a.mau, b.tu, b.mau);
     } else if (x==y) {
         printf("2 phan so bang nhau\n");
     }else {
-        printf("phan so %d/%d lon hon phan so %d/%d\n", a.tu, a.mau, b.tu, b.mau);
+        printf("%d/%d > %d/%d\n", a.tu, a.mau, b.tu, b.mau);
     }
 }
 
@@ -145,32 +146,38 @@ int check(char s[]) {
     return cnt;
 }
 void motPhanSo(phanSo a) {
-    printf("Dao nguoc: ");
+    printf("Dao nguoc:\n");
     xuat(daoNguoc(a));
 
-    printf("Rut gon: ");
+    printf("Rut gon:\n");
     xuat(rutGon(a));
 
-    printf("Hop phan: ");
+    printf("Hop phan:\n");
     hopPhan(a);
 }
 void haiPhanSo(phanSo a, phanSo b) {
-    printf("BCNN cua 2 mau so: ");
+    printf("BCNN cua 2 mau so:\n");
     printf("%d\n", lcm(a.mau, b.mau));
 
-    printf("Tong cua 2 phan so la: ");
+    printf("Tong cua 2 phan so la:\n");
     xuat(cong(a, b));
-
-    printf("Hieu cua 2 phan so la: ");
+    
+    printf("Hieu cua 2 phan so la:\n");
+    printf("%d/%d - %d/%d = ", a.tu, a.mau, b.tu, b.mau);
     xuat(tru(a, b));
+    printf("%d/%d - %d/%d = ", b.tu, b.mau, a.tu, a.mau);
+    xuat(tru(b, a));
 
-    printf("Tich cua 2 phan so la: ");
+    printf("Tich cua 2 phan so la:\n");
     xuat(nhan(a, b));
 
-    printf("Thuong cua 2 phan so la: ");
+    printf("Thuong cua 2 phan so la:\n");
+    printf("(%d/%d) / (%d/%d) = ", a.tu, a.mau, b.tu, b.mau);
     xuat(chia(a, b));
+    printf("(%d/%d) / (%d/%d) = ", b.tu, b.mau, a.tu, a.mau);
+    xuat(chia(b, a));
 
-    printf("So sanh 2 so: ");
+    printf("So sanh 2 so:\n");
     soSanh(a, b);
 }
 
