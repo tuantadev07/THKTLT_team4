@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 void tinhGiaiThua(int n) {
-    int a[(int)1e6] = {0};
+    int a[(int)1e4] = {0};
     a[0] = 1;
     int len=1;
 
