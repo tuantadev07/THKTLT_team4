@@ -7,6 +7,43 @@ struct phanSo {
 };
 typedef struct phanSo phanSo;
 
+int gcd(int a, int b);
+int lcm(int a, int b);
+void nhap1(phanSo *a, char s[]);
+void nhap2(phanSo *a, phanSo *b, char *s);
+void xuat(phanSo a);
+
+phanSo daoNguoc(phanSo a);
+phanSo rutGon(phanSo a);
+void hopPhan(phanSo a);
+phanSo cong(phanSo a, phanSo b);
+phanSo tru(phanSo a, phanSo b);
+phanSo nhan(phanSo a, phanSo b);
+phanSo chia(phanSo a, phanSo b);
+
+void soSanh(phanSo a, phanSo b);
+int check(char s[]);
+void motPhanSo(phanSo a);
+void haiPhanSo(phanSo a, phanSo b);
+
+int main () {
+    char s[100]; scanf("%[^\n]", s);
+    phanSo a, b;
+
+    if (check(s)==1) {
+        nhap1(&a, s); 
+        motPhanSo(a);
+    } else if (check(s)==2) {
+        int i=0;
+        nhap2(&a, &b, s);
+        haiPhanSo(a, b);
+    } else {
+        printf("Du lieu dau vao khong hop le\n");
+    }
+
+    return 0;
+}
+
 int gcd(int a, int b) {
     if (b==0) return a;
     return gcd(b, a%b);
@@ -179,22 +216,4 @@ void haiPhanSo(phanSo a, phanSo b) {
 
     printf("So sanh 2 so:\n");
     soSanh(a, b);
-}
-
-int main () {
-    char s[100]; scanf("%[^\n]", s);
-    phanSo a, b;
-
-    if (check(s)==1) {
-        nhap1(&a, s); 
-        motPhanSo(a);
-    } else if (check(s)==2) {
-        int i=0;
-        nhap2(&a, &b, s);
-        haiPhanSo(a, b);
-    } else {
-        printf("Du lieu dau vao khong hop le\n");
-    }
-
-    return 0;
 }

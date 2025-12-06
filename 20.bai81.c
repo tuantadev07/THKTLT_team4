@@ -3,6 +3,23 @@
 #define maxSize 1000
 double a[maxSize][maxSize];
 
+int timViTriMin(double a[], int n);
+void swap(double* a, double* b);
+void nhap(double a[][maxSize], int n);
+void xuat(double a[][maxSize], int n);
+void cau_a(double a[][maxSize], int n);
+void cau_b(double a[][maxSize], int n);
+
+int main () {
+    int n; scanf("%d", &n);
+    nhap(a, n);
+   
+    cau_a(a, n);
+    cau_b(a, n);
+
+    return 0;
+}
+
 int timViTriMin(double a[], int n) {
     int res = 0;
     for (int i=0; i<n; ++i) {
@@ -52,14 +69,4 @@ void cau_b(double a[][maxSize], int n) {
     printf("Ma tran sau khi dua phan tu be nhat cua tung hang len duong cheo phu:\n");
     xuat(a, n);
     printf("Tong cua cac phan tu be nhat: %.6g\n", sum);
-}
-
-int main () {
-    int n; scanf("%d", &n);
-    nhap(a, n);
-   
-    cau_a(a, n);
-    cau_b(a, n);
-
-    return 0;
 }
