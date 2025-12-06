@@ -1,6 +1,32 @@
 #include <stdio.h>
 #include <math.h>
 
+int scp(int n);
+int snt(int n);
+int check (double n);
+
+int checkDang2(int n);
+int checkDang3(int n);
+
+void tongCua2So(int n);
+void tongCua3So(int n);
+void tongCua4So(int n);
+
+void solve(int n);
+
+int main () {   
+    double n; scanf("%lf", &n);
+
+    while (!check(n)) {
+        printf("n khong hop le, nhap lai:\n");
+        scanf("%lf", &n);
+    }
+   
+    solve(n);
+
+    return 0;
+}
+
 int scp(int n) {
     int k = sqrt(n);
     return k*k==n;
@@ -10,6 +36,11 @@ int snt(int n) {
         if (n%i==0) return 0;
     }
     return n>1;
+}
+
+int check (double n) {
+    long long tmp = n;
+    return tmp == n && n >= 0 && n <= 7000000;
 }
 
 int checkDang2(int n) {
@@ -87,12 +118,4 @@ void solve(int n) {
         return;
     }
     tongCua4So(n);
-}
-
-int main () {   
-    int n; scanf("%d", &n);
-   
-    solve(n);
-
-    return 0;
 }

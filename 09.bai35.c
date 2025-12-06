@@ -1,5 +1,20 @@
 #include <stdio.h>
 
+void tinhGiaiThua(int n);
+
+int main () {   
+    int n; scanf("%d", &n);
+
+    while (n < 0 || n > 2000) {
+        printf("n khong hop le, nhap lai n:\n");
+        scanf("%d", &n);
+    }
+
+    tinhGiaiThua(n);
+
+    return 0;
+}
+
 void tinhGiaiThua(int n) {
     int a[(int)1e4] = {0};
     a[0] = 1;
@@ -25,12 +40,4 @@ void tinhGiaiThua(int n) {
         printf("%d", a[i]);
     }
     printf("\n");
-}
-
-int main () {   
-    int n; scanf("%d", &n);
-
-    tinhGiaiThua(n);
-
-    return 0;
 }

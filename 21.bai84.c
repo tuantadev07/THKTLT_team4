@@ -2,6 +2,24 @@
 
 double a[1000][1000];
 
+void swap(double *a, double *b);
+void nhap (double a[][1000], int m, int n);
+void xuat (double a[][1000], int m, int n);
+double dinh_thuc (double a[][1000], int n);
+
+int main () {
+    int n;
+    printf("Nhap n: ");
+    scanf("%d", &n);
+
+    nhap(a, n, n);
+    xuat(a, n, n);
+
+    printf("Det: %.20g", dinh_thuc(a, n));
+
+    return 0;
+}
+
 void swap(double *a, double *b) {
     double tmp = *a;
     *a = *b;
@@ -58,16 +76,4 @@ double dinh_thuc (double a[][1000], int n) {
     }
 
     return det;
-}
-
-int main () {
-    int n;
-    printf("Nhap n: ");
-    scanf("%d", &n);
-
-    nhap(a, n, n);
-
-    printf("Det: %.20g", dinh_thuc(a, n));
-
-    return 0;
 }

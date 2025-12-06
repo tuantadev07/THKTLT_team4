@@ -3,6 +3,30 @@ typedef double db;
 
 db a[(int)2e6+1], b[(int)1e6+1];
 
+void swap(db *a, db *b);
+void nhap(db a[], int n);
+void xuat(db a[], int n);
+
+void ghepVaXapXep(db a[], db b[], int na, int nb, int l, int r);
+void ghep(db a[], db b[], int n, int m);
+
+int main () {   
+    int n, m; 
+    printf("Nhap n va m: ");
+    scanf("%d %d", &n, &m);
+
+    printf("Nhap mang A:\n"); nhap(a, n);
+    printf("Nhap mang B:\n"); nhap(b, m);
+
+    printf("Mang A:\n"); xuat(a, n);
+    printf("Mang B:\n"); xuat(b, m);
+
+    printf("Ghep 2 mang va xap xep giam dan:\n");
+    ghep(a, b, n, m);
+
+    return 0;
+}
+
 void swap(db *a, db *b) {
     db tmp = *a;
     *a = *b;
@@ -61,21 +85,4 @@ void ghep(db a[], db b[], int n, int m) {
     // for (int i=0; i<m; ++i) {
     //     a[n+i] = b[i];
     // }
-}
-
-int main () {   
-    int n, m; 
-    printf("Nhap n va m: ");
-    scanf("%d %d", &n, &m);
-
-    printf("Nhap mang A:\n"); nhap(a, n);
-    printf("Nhap mang B:\n"); nhap(b, m);
-
-    printf("Mang A:\n"); xuat(a, n);
-    printf("Mang B:\n"); xuat(b, m);
-
-    printf("Ghep 2 mang va xap xep giam dan:\n");
-    ghep(a, b, n, m);
-
-    return 0;
 }
